@@ -2,6 +2,8 @@ package com.aceleracaojavav2.models;
 
 import java.net.URL;
 
+import com.aceleracaojavav2.dtos.UserDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
