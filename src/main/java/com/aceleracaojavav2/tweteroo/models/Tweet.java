@@ -1,8 +1,7 @@
-package com.aceleracaojavav2.models;
+package com.aceleracaojavav2.tweteroo.models;
 
-import java.net.URL;
 
-import com.aceleracaojavav2.dtos.TweetDTO;
+import com.aceleracaojavav2.tweteroo.dtos.TweetDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ public class Tweet {
     String username;
 
     @Column(nullable = false)
-    URL avatar;
+    String avatar;
 
     @Column(length=200, nullable = false)
     String text;

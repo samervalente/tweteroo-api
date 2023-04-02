@@ -1,6 +1,5 @@
-package com.aceleracaojavav2.dtos;
+package com.aceleracaojavav2.tweteroo.dtos;
 
-import java.net.URL;
 
 import jakarta.validation.constraints.NotBlank;
 
@@ -10,7 +9,7 @@ public record TweetDTO(
 String username, 
 
 @NotBlank
-URL avatar, 
+String avatar, 
 
 @NotBlank
 String text) {

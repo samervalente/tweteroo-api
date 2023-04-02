@@ -1,8 +1,5 @@
-package com.aceleracaojavav2.models;
+package com.aceleracaojavav2.tweteroo.models;
 
-import java.net.URL;
-
-import com.aceleracaojavav2.dtos.UserDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
     
-    public User(UserDTO userData){
+    public User(com.aceleracaojavav2.tweteroo.dtos.UserDTO userData){
         this.username = userData.username();
         this.avatar = userData.avatar();
     }
@@ -30,6 +27,6 @@ public class User {
     String username;
 
     @Column(nullable = false)
-    URL avatar;
+    String avatar;
    
 }
