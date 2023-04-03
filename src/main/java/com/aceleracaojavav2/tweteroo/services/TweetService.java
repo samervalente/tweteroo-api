@@ -3,7 +3,9 @@ package com.aceleracaojavav2.tweteroo.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.aceleracaojavav2.tweteroo.dtos.TweetDTO;
@@ -32,7 +34,9 @@ public class TweetService {
         return createdTweet;
     }
 
-    public List<Tweet> getAll(){
-        return tweetRepository.findAll();
+    public List<Tweet> getAll(Integer page){
+        Pageable elements = PageRequest.of(page, 5);
+        Page<Tweet> tweetsByPage = tweetRepository.findAll(elements);
+        return tweetsByPage.getContent();
     }
 }
