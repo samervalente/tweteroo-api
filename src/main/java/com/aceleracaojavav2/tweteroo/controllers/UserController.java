@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.aceleracaojavav2.tweteroo.dtos.UserDTO;
 import com.aceleracaojavav2.tweteroo.models.Usuario;
-import com.aceleracaojavav2.tweteroo.repositories.UserRepository;
+import com.aceleracaojavav2.tweteroo.services.UserService;
 
 import jakarta.validation.Valid;
 
@@ -20,16 +20,16 @@ import jakarta.validation.Valid;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @PostMapping
-    public void create(@RequestBody @Valid UserDTO userData){
-        userRepository.save(new Usuario(userData));
+    public String create(@RequestBody @Valid UserDTO userData){
+        userService.create(userData);
+        return "Ok";
     }
 
     @GetMapping
     public List<Usuario> listAll(){
-        List<Usuario> users = userRepository.findAll();
-        return users;
+        return  userService.listAll();
     }
 }
