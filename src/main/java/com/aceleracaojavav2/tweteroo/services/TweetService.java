@@ -35,8 +35,18 @@ public class TweetService {
     }
 
     public List<Tweet> getAll(Integer page){
-        Pageable elements = PageRequest.of(page, 5);
+        Pageable elements = PageRequest.of(page, 5);//page, size
         Page<Tweet> tweetsByPage = tweetRepository.findAll(elements);
         return tweetsByPage.getContent();
     }
+
+    public List<Tweet> getTweetsByUsername(String username){
+        Usuario usuario = userRepository.findByName(username);
+        if(usuario == null){
+            throw new NotFoundException("Usuário não encontrado.");
+        }
+        return tweetRepository.findByUsername(username);
+    }
+
+   
 }

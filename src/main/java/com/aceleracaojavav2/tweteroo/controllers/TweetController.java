@@ -3,10 +3,10 @@ package com.aceleracaojavav2.tweteroo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +36,12 @@ public class TweetController {
     @GetMapping
     public ResponseEntity<List<Tweet>> listAll(@RequestParam(required = false, defaultValue = "0") Integer page){
         List<Tweet> tweets = tweetService.getAll(page);
+        return new ResponseEntity<>(tweets, HttpStatus.OK);
+    }
+
+    @GetMapping("/{username}")
+    public ResponseEntity<List<Tweet>> getTweetsByUsername(@PathVariable String username){
+        List<Tweet> tweets = tweetService.getTweetsByUsername(username);
         return new ResponseEntity<>(tweets, HttpStatus.OK);
     }
 }   
