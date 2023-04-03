@@ -8,10 +8,8 @@ public record TweetDTO(
 @NotBlank
 String username, 
 
-@NotBlank
-String avatar, 
 
 @NotBlank
-String text) {
+String tweet) {
     
 }

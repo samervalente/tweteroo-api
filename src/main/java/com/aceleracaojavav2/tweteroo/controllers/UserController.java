@@ -2,6 +2,7 @@ package com.aceleracaojavav2.tweteroo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,14 +23,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @PostMapping
-    public String create(@RequestBody @Valid UserDTO userData){
+    public void create(@RequestBody @Valid UserDTO userData){
         userService.create(userData);
-        return "Ok";
     }
 
     @GetMapping
     public List<Usuario> listAll(){
-        return  userService.listAll();
+          return userService.listAll();
     }
 }
