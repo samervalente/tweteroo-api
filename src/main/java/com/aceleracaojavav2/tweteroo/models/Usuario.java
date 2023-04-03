@@ -1,6 +1,8 @@
 package com.aceleracaojavav2.tweteroo.models;
 
 
+import com.aceleracaojavav2.tweteroo.dtos.UserDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,10 +14,10 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-public class User {
+public class Usuario {
     
-    public User(com.aceleracaojavav2.tweteroo.dtos.UserDTO userData){
-        this.username = userData.username();
+    public Usuario (UserDTO userData){
+        this.name = userData.name();
         this.avatar = userData.avatar();
     }
 
@@ -24,9 +26,9 @@ public class User {
     private Long id;
 
     @Column(length = 50, nullable = false)
-    String username;
+    private String name;
 
     @Column(nullable = false)
-    String avatar;
+    private String avatar;
    
 }
