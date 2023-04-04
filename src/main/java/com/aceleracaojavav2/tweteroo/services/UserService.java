@@ -8,25 +8,26 @@ import java.util.List;
 import com.aceleracaojavav2.tweteroo.dtos.UserDTO;
 import com.aceleracaojavav2.tweteroo.exceptions.ConflictException;
 import com.aceleracaojavav2.tweteroo.models.Usuario;
-import com.aceleracaojavav2.tweteroo.repositories.UserRepository;
+import com.aceleracaojavav2.tweteroo.repositories.MongoUsuarioRepository;
+
 
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private MongoUsuarioRepository mongoRepository;
 
     public Usuario create(UserDTO userData){
-        Usuario usuario = userRepository.findByName(userData.name());
+        Usuario usuario = mongoRepository.findByName(userData.name());
         if(usuario != null){
             throw new ConflictException("Usuário com nome já existente.");
         }
       
-        return userRepository.save(new Usuario(userData));
+        return mongoRepository.insert(new Usuario(userData));
     }
 
     public List<Usuario> listAll(){
-        return userRepository.findAll();
+        return mongoRepository.findAll();
     }
 
 }

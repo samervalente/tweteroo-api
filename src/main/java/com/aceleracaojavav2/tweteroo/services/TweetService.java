@@ -13,7 +13,7 @@ import com.aceleracaojavav2.tweteroo.exceptions.NotFoundException;
 import com.aceleracaojavav2.tweteroo.models.Tweet;
 import com.aceleracaojavav2.tweteroo.models.Usuario;
 import com.aceleracaojavav2.tweteroo.repositories.TweetRepository;
-import com.aceleracaojavav2.tweteroo.repositories.UserRepository;
+import com.aceleracaojavav2.tweteroo.repositories.MongoUsuarioRepository;
 
 @Service
 public class TweetService {
@@ -22,7 +22,7 @@ public class TweetService {
     private TweetRepository tweetRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MongoUsuarioRepository userRepository;
 
     public Tweet create(TweetDTO tweetData){
         Usuario usuario = userRepository.findByName(tweetData.username());

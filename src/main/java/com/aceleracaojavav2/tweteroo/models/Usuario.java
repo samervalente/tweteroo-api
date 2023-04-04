@@ -1,10 +1,11 @@
 package com.aceleracaojavav2.tweteroo.models;
 
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.aceleracaojavav2.tweteroo.dtos.UserDTO;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,7 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
+@Document("users")
 @NoArgsConstructor
 public class Usuario {
     
@@ -23,7 +24,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
 
     @Column(length = 50, nullable = false)
     private String name;
